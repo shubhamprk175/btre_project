@@ -19,13 +19,13 @@ def contact(request):
         message=message, user_id=user_id)
         contact.save()
 
-        send_mail(
-            'Property Inquiry',
-            'Somebody has inquired for the property: '+listing+'. Please Sign in to admin panel and check',
-            'pareek.5343@gmail.com',
-            [realtor_email, 'shubhamst5343@gmail.com'],
-            fail_silently=False
-        )
+        # send_mail(
+        #     'Property Inquiry',
+        #     'Somebody has inquired for the property: '+listing+'. Please Sign in to admin panel and check',
+        #     'pareek.5343@gmail.com',
+        #     [realtor_email, 'shubhamst5343@gmail.com'],
+        #     fail_silently=False
+        # )
 
         messages.success(request, 'You have successfully submitted your inquiry, a realtor will get back to you soon')
 
