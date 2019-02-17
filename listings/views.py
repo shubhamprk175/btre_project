@@ -21,10 +21,9 @@ def index(request):
 def listing(request, listing_id):
     listing = get_object_or_404(Listing, pk=listing_id)
 
-    f = open("./client_ip_addr.txt","a+")
-    f.write('hello: ')
-    f.write(get_client_ip(request)+'\n')
-    f.close()
+    import subprocess
+    #subprocess.check_output(['ls','-l']) #all that is technically needed...
+    subprocess.check_output(['touch','hello.txt'])
     context = {
         'listing': listing
     }
