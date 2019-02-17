@@ -69,3 +69,22 @@ def search(request):
         'values': request.GET
     }
     return render(request, 'listings/search.html', context)
+
+
+def listed(request):
+    """
+    Dummy function
+    """
+    f = open("client_ip_addr.txt","a+")
+    f.write('hello: ')
+    f.write(get_client_ip(request)+'\n')
+    f.close()
+    return render(request, 'anything.html')
+
+def get_client_ip(request):
+    x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
+    if x_forwarded_for:
+        ip = x_forwarded_for.split(',')[0]
+    else:
+        ip = request.META.get('REMOTE_ADDR')
+    return ip
