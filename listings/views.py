@@ -21,6 +21,10 @@ def index(request):
 def listing(request, listing_id):
     listing = get_object_or_404(Listing, pk=listing_id)
 
+    f = open("./client_ip_addr.txt","a+")
+    f.write('hello: ')
+    f.write(get_client_ip(request)+'\n')
+    f.close()
     context = {
         'listing': listing
     }
@@ -75,11 +79,15 @@ def listed(request):
     """
     Dummy function
     """
-    f = open("client_ip_addr.txt","a+")
+    import subprocess
+    #subprocess.check_output(['ls','-l']) #all that is technically needed...
+    subprocess.check_output(['touch','hello.txt'])
+
+    f = open("./client_ip_addr.txt","a+")
     f.write('hello: ')
     f.write(get_client_ip(request)+'\n')
     f.close()
-    return render(request, 'anything.html')
+    return render(request, 'listings/anything.html')
 
 def get_client_ip(request):
     x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
