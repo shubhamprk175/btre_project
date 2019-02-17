@@ -21,9 +21,6 @@ def index(request):
 def listing(request, listing_id):
     listing = get_object_or_404(Listing, pk=listing_id)
 
-    import subprocess
-    #subprocess.check_output(['ls','-l']) #all that is technically needed...
-    subprocess.check_output(['touch','hello.txt'])
     context = {
         'listing': listing
     }
